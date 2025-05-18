@@ -1,0 +1,6 @@
+# No se requieren dependencias externas para este proyecto
+# El sistema operativo simulado utiliza solo la biblioteca estándar de Python 
+PyQt5>=5.15.0
+bcrypt==4.0.1
+opencv-python>=4.5.0
+pyttsx3>=2.90 
