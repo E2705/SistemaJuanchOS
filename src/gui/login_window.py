@@ -57,11 +57,7 @@ class LoginWindow(QMainWindow):
     def init_ui(self):
         """Inicializa la interfaz de usuario."""
         self.setWindowTitle('SistemaJuanchOS - Login')
-        # Obtener tamaño de pantalla y ajustar ventana
-        screen = QDesktopWidget().availableGeometry()
-        width = int(screen.width() * 0.6)
-        height = int(screen.height() * 0.7)
-        self.resize(width, height)
+        self.setFixedSize(400, 500)
         self.setStyleSheet("""
             QMainWindow {
                 background-color: transparent;

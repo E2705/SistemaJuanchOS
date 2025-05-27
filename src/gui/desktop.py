@@ -264,7 +264,12 @@ class StartMenu(QFrame):
             self.parent().close()
 
     def resizeEvent(self, event):
+        """Maneja el redimensionamiento del menú de inicio."""
         super().resizeEvent(event)
+        self.update_logo_size()
+
+    def update_logo_size(self):
+        """Actualiza el tamaño del logo cuando se redimensiona el menú."""
         logo_label = self.findChild(QLabel, "logoLabel")
         if logo_label and logo_label.pixmap():
             new_width = self.width() - 20
@@ -443,7 +448,8 @@ class Desktop(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle('SistemaJuanchOS - Desktop')
-        self.setFixedSize(1800, 1000)
+        self.setMinimumSize(1024, 768)
+        self.resize(1800, 1000)
         
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
