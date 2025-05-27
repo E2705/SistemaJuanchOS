@@ -443,7 +443,8 @@ class Desktop(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle('SistemaJuanchOS - Desktop')
-        self.setFixedSize(1800, 1000)
+        self.setMinimumSize(1024, 768)
+        self.resize(1800, 1000)
         
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -650,4 +651,26 @@ class Desktop(QMainWindow):
         
         if self.start_menu and self.start_menu.isVisible():
             pos = self.mapToGlobal(QPoint(0, self.height() - self.start_menu.height() - 80))
-            self.start_menu.move(pos) 
+            self.start_menu.move(pos)
+        
+        self.reposition_desktop_icons()
+
+    def reposition_desktop_icons(self):
+        """Reposiciona los iconos del escritorio cuando se redimensiona la ventana."""
+        if not self.desktop_icons:
+            return
+            
+        # Calcular el número de columnas basado en el ancho de la ventana
+        icon_width = 100
+        icon_height = 120
+        margin = 20
+        
+        # Calcular el número máximo de columnas que caben en la ventana
+        max_columns = max(1, (self.width() - margin) // icon_width)
+        
+        for i, icon in enumerate(self.desktop_icons):
+            row = i // max_columns
+            col = i % max_columns
+            x = margin + (col * icon_width)
+            y = margin + (row * icon_height)
+            icon.move(x, y) 
