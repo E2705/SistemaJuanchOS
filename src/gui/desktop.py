@@ -443,8 +443,7 @@ class Desktop(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle('SistemaJuanchOS - Desktop')
-        self.setMinimumSize(1024, 768)
-        self.resize(1800, 1000)
+        self.setFixedSize(1800, 1000)
         
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
